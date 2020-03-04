@@ -1,7 +1,7 @@
 import { Entity, Column, OneToMany } from 'typeorm';
 import { Identifiable } from './base';
 import { Dateable, Nameable } from './embedded';
-import { Animal } from './animal.entity';
+import { Pet } from './animals/pet.entity';
 
 @Entity('users')
 export class User extends Identifiable {
@@ -18,10 +18,10 @@ export class User extends Identifiable {
   // relations
 
   @OneToMany(
-    () => Animal,
-    animal => animal.owner
+    () => Pet,
+    pet => pet.owner
   )
-  pets: Animal[];
+  pets: Pet[];
 
   @Column(() => Dateable, { prefix: false })
   date: Dateable;
