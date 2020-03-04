@@ -6,8 +6,9 @@ import { Animal } from '../animal.entity';
 export abstract class Pet extends Animal {
   @ManyToOne(
     () => User,
-    user => user.pets
+    user => user.pets,
+    { nullable: true }
   )
   @JoinColumn({ name: 'owner_id' })
-  owner: User;
+  owner?: User;
 }
