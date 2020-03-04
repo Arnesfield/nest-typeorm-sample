@@ -1,12 +1,9 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
-import { Dateable } from './embedded/dateable.embedded-entity';
-import { Nameable } from './embedded/nameable.embedded-entity';
+import { Entity, Column } from 'typeorm';
+import { Identifiable } from './base';
+import { Dateable, Nameable } from './embedded';
 
 @Entity('users')
-export class User {
-  @PrimaryGeneratedColumn()
-  id: number;
-
+export class User extends Identifiable {
   @Column()
   username: string;
 
